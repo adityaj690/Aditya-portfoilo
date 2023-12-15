@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000; // Choose a port number
 app.use(cors());
 
 // Serve static files (your HTML, CSS, JS) from a directory
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
@@ -28,7 +28,7 @@ db.initialize()
   });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'public','index.html'));
   });
 
 app.post('/add-data',  async (req, res) => {
@@ -37,9 +37,12 @@ app.post('/add-data',  async (req, res) => {
         console.log(req.body.name);
         const result = await db.addData(req.body); 
     // Display an alert for success
-    res.redirect('/?success=' + encodeURIComponent(result.message));
+   
+    res.redirect('/?success=' + encodeURIComponent(result.message)
+    );
         
     } catch (error) {
-        res.redirect('/?error=' + encodeURIComponent(error.message));
+      
+        res.redirect('/?error='+encodeURIComponent(error.message));
     }
 });

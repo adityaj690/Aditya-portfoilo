@@ -19,6 +19,21 @@
 		<!-- Template Main CSS File -->
 		<link href="assets/css/style.css" rel="stylesheet">
 	</head>
+	<script>
+		// Get the success and error parameters from the URL
+		const successParam = new URLSearchParams(window.location.search).get('success');
+		const errorParam = new URLSearchParams(window.location.search).get('error');
+	
+		// Display an alert for success
+		if (successParam) {
+		  alert('Success: ' + decodeURIComponent(successParam));
+		}
+	
+		// Display an alert for error
+		if (errorParam) {
+		  alert('Error: ' + decodeURIComponent(errorParam));
+		}
+	  </script>
 	<body>
 		<!-- ======= Mobile nav toggle button ======= -->
 		<!-- <button type="button" class="mobile-nav-toggle d-xl-none"><i class="bi bi-list mobile-nav-toggle"></i></button> -->
