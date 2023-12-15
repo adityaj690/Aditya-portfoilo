@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000; // Choose a port number
 app.use(cors());
 
 // Serve static files (your HTML, CSS, JS) from a directory
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
